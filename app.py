@@ -6,7 +6,7 @@ import time
 # --- KONFIGURASI HALAMAN WEB ---
 st.set_page_config(page_title="Cek Tren YouTube", layout="wide")
 
-st.title("📈 YouTube Search Trends Analyzer")
+st.title("📈 Analisis YouTube Search Trends")
 st.markdown("Cek seberapa sering kata kunci dicari di YouTube dalam 24 jam terakhir.")
 
 # --- SIDEBAR (INPUT) ---
@@ -16,13 +16,13 @@ st.sidebar.header("Konfigurasi")
 st.sidebar.warning(
     "⚠️ **PENTING: Aturan Pakai**\n\n"
     "Google membatasi jumlah request.\n"
-    "Mohon **beri jeda sekitar 5 menit** setelah setiap kali menekan tombol 'Analisa Tren'.\n"
+    "Mohon **beri jeda sekitar 1 menit** setelah menekan tombol 'Analisa Tren'.\n"
     "Jika terlalu cepat, Google akan memblokir sementara."
 )
 
 input_text = st.sidebar.text_area(
     "Masukkan Keyword (Max 5, pisah koma)", 
-    "Minecraft, Tutorial Masak, Gadget Review"
+    "Jokowi, Prabowo, Banjarmasin"
 )
 
 btn_submit = st.sidebar.button("Analisa Tren 🚀")
@@ -77,7 +77,7 @@ if btn_submit:
                     
                     # [FITUR BARU] Pesan Sukses & Reminder Jeda
                     st.success("✅ Data berhasil diambil!")
-                    st.info("⏳ Mohon tunggu minimal **30 detik** sebelum melakukan pencarian baru agar IP tidak diblokir.")
+                    st.info("⏳ Mohon tunggu minimal **1 menit** sebelum melakukan pencarian baru agar IP tidak diblokir.")
 
                 else:
                     st.warning("Data kosong. Kata kunci mungkin terlalu spesifik/jarang dicari.")
