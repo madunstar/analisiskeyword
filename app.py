@@ -57,7 +57,13 @@ if btn_submit:
                 if not data.empty:
                     if 'isPartial' in data.columns:
                         data = data.drop(columns=['isPartial'])
-
+                        
+                    if data.index.tz is None:
+                        data.index = data.index.tz_localize('UTC')
+                    data.index = data.index.tz_convert('Asia/Jakarta')
+                    tabel_view = data.copy()
+                    tabel_view.index = tabel_view.index.strftime('%d-%m %H:%M')
+                    
                     # 3. Tampilkan Grafik
                     st.subheader("📊 Grafik Minat (24 Jam Terakhir)")
                     st.line_chart(data)
